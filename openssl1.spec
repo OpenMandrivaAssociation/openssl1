@@ -5,6 +5,8 @@
 %bcond_with compat32
 %endif
 
+%bcond_without compat_package
+
 # For the curious:
 # 0.9.5a soversion = 0
 # 0.9.6  soversion = 1
@@ -554,12 +556,32 @@ install -m644 %{SOURCE9} \
 # For spec_install_post script
 export LD_LIBRARY_PATH=`pwd`${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
+%if %{with compat_package}
+# Remove stuff not packaged for a compat library
+rm -rf %{buildroot}%{_includedir} \
+	%{buildroot}%{_libdir}/*.so \
+	%{buildroot}%{_libdir}/pkgconfig \
+	%{buildroot}%{_prefix}/lib/*.so \
+	%{buildroot}%{_prefix}/lib/pkgconfig \
+	%{buildroot}%{_bindir} \
+	%{buildroot}%{_sysconfdir} \
+	%{buildroot}%{_libdir}/*.a \
+	%{buildroot}%{_prefix}/lib/*.a \
+	%{buildroot}%{_datadir} \
+	%{buildroot}%{_prefix}/lib/rpm
+%endif
+
 %libpackage crypto %{soversion}
 %{_libdir}/.libcrypto*.hmac
 
 %libpackage ssl %{soversion}
 %{_libdir}/.libssl*.hmac
 
+%files -n %{engines_name}
+%dir %{_libdir}/engines-%{soversion}
+%{_libdir}/engines-%{soversion}/*.so
+
+%if ! %{with compat_package}
 %files
 %{!?_licensedir:%global license %%doc}
 %license LICENSE
@@ -577,10 +599,6 @@ export LD_LIBRARY_PATH=`pwd`${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 %attr(0644,root,root) %{_mandir}/man1*/[ABD-Zabcd-z]*
 %attr(0644,root,root) %{_mandir}/man5*/*
 %attr(0644,root,root) %{_mandir}/man7*/*
-
-%files -n %{engines_name}
-%dir %{_libdir}/engines-%{soversion}
-%{_libdir}/engines-%{soversion}/*.so
 
 %files -n %{devname}
 %{_includedir}/openssl
@@ -611,6 +629,7 @@ export LD_LIBRARY_PATH=`pwd`${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 %files doc
 %doc CHANGES doc/dir-locals.example.el doc/openssl-c-indent.el
 %doc FAQ NEWS README README.FIPS
+%endif
 
 %if %{with compat32}
 %files -n %{lib32crypto}
@@ -622,6 +641,7 @@ export LD_LIBRARY_PATH=`pwd`${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 %files -n %{engines32_name}
 %{_prefix}/lib/engines-1.1
 
+%if ! %{with compat_package}
 %files -n %{dev32name}
 %{_prefix}/lib/libcrypto.so
 %{_prefix}/lib/libssl.so
@@ -631,4 +651,5 @@ export LD_LIBRARY_PATH=`pwd`${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 %files -n %{static32name}
 %{_prefix}/lib/libcrypto.a
 %{_prefix}/lib/libssl.a
+%endif
 %endif
