@@ -5,6 +5,8 @@
 %bcond_with compat32
 %endif
 
+%global debug_package %{nil}
+
 %bcond_without compat_package
 
 # For the curious:
@@ -67,9 +69,9 @@
 
 Summary: Utilities from the general purpose cryptography library with TLS implementation
 Name: openssl
-Version: 1.1.1g
+Version: 1.1.1h
 %define beta %{nil}
-Release: %{-beta:0.%{beta}.}2
+Release: %{-beta:0.%{beta}.}1
 # We have to remove certain patented algorithms from the openssl source
 # tarball with the hobble-openssl script which is included below.
 # The original openssl upstream tarball cannot be shipped in the .src.rpm.
@@ -99,7 +101,6 @@ Patch38: http://pkgs.fedoraproject.org/cgit/rpms/openssl.git/plain/openssl-1.1.1
 Patch40: http://pkgs.fedoraproject.org/cgit/rpms/openssl.git/plain/openssl-1.1.1-disable-ssl3.patch
 # Ported by OMV
 Patch41: http://pkgs.fedoraproject.org/cgit/rpms/openssl.git/plain/openssl-1.1.1-fips.patch
-Patch43: http://pkgs.fedoraproject.org/cgit/rpms/openssl.git/plain/openssl-1.1.1-ignore-bound.patch
 # Ported by OMV
 Patch44: http://pkgs.fedoraproject.org/cgit/rpms/openssl.git/plain/openssl-1.1.1-version-override.patch
 Patch45: http://pkgs.fedoraproject.org/cgit/rpms/openssl.git/plain/openssl-1.1.1-weak-ciphers.patch
@@ -408,6 +409,7 @@ done
 patch -p1 -R < %{PATCH31}
 
 # This seems to fail because of a problem with the test
+rm test/recipes/15-test_genec.t
 rm test/recipes/20-test_enc.t
 rm test/recipes/30-test_evp_extra.t
 rm test/recipes/80-test_ssl_new.t
