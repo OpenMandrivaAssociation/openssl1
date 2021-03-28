@@ -91,7 +91,7 @@ Source13: http://pkgs.fedoraproject.org/cgit/rpms/openssl.git/plain/ectest.c
 Patch1: http://pkgs.fedoraproject.org/cgit/rpms/openssl.git/plain/openssl-1.1.1-build.patch
 Patch2: http://pkgs.fedoraproject.org/cgit/rpms/openssl.git/plain/openssl-1.1.1-defaults.patch
 # Bug fixes
-Patch21: http://pkgs.fedoraproject.org/cgit/rpms/openssl.git/plain/openssl-1.1.0-issuer-hash.patch
+
 # Functionality changes
 Patch31: http://pkgs.fedoraproject.org/cgit/rpms/openssl.git/plain/openssl-1.1.1-conf-paths.patch
 Patch32: http://pkgs.fedoraproject.org/cgit/rpms/openssl.git/plain/openssl-1.1.1-version-add-engines.patch
