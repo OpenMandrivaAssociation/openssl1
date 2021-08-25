@@ -1,12 +1,12 @@
-diff -up openssl-1.1.1i/include/openssl/opensslv.h.version-override openssl-1.1.1i/include/openssl/opensslv.h
---- openssl-1.1.1i/include/openssl/opensslv.h.version-override	2020-12-09 10:25:12.042374409 +0100
-+++ openssl-1.1.1i/include/openssl/opensslv.h	2020-12-09 10:26:00.362769170 +0100
+diff -up openssl-1.1.1l/include/openssl/opensslv.h.10~ openssl-1.1.1l/include/openssl/opensslv.h
+--- openssl-1.1.1l/include/openssl/opensslv.h.10~	2021-08-25 15:52:26.207785700 +0200
++++ openssl-1.1.1l/include/openssl/opensslv.h	2021-08-25 15:53:21.775877443 +0200
 @@ -40,7 +40,7 @@ extern "C" {
   *  major minor fix final patch/beta)
   */
- # define OPENSSL_VERSION_NUMBER  0x101010afL
--# define OPENSSL_VERSION_TEXT    "OpenSSL 1.1.1j  16 Feb 2021"
-+# define OPENSSL_VERSION_TEXT    "OpenSSL 1.1.1j  FIPS 16 Feb 2021"
+ # define OPENSSL_VERSION_NUMBER  0x101010cfL
+-# define OPENSSL_VERSION_TEXT    "OpenSSL 1.1.1l  24 Aug 2021"
++# define OPENSSL_VERSION_TEXT    "OpenSSL 1.1.1l  FIPS 24 Aug 2021"
  
  /*-
   * The macros below are to be used for shared library (.so, .dll, ...)

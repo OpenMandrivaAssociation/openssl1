@@ -5,7 +5,8 @@
 %bcond_with compat32
 %endif
 
-%global debug_package %{nil}
+# Weird build system
+%global _empty_manifest_terminate_build 0
 
 %bcond_without compat_package
 
@@ -69,7 +70,7 @@
 
 Summary: Utilities from the general purpose cryptography library with TLS implementation
 Name: openssl
-Version: 1.1.1j
+Version: 1.1.1l
 %define beta %{nil}
 Release: %{-beta:0.%{beta}.}1
 # We have to remove certain patented algorithms from the openssl source
@@ -365,11 +366,16 @@ make depend
 make
 
 #apps/openssl speed
-LD_PRELOAD="./libcrypto.so ./libssl.so" apps/openssl speed rsa
+# List of algorithms here is what is most commonly used
+# (e.g. for TLS)
+LD_PRELOAD="./libcrypto.so ./libssl.so" apps/openssl speed ecdsa aes rsa sha256 sha512
 
 unset LD_LIBRARY_PATH
 unset LLVM_PROFILE_FILE
-llvm-profdata merge --output=%{name}.profile *.profile.d
+#llvm-profdata merge --output=%{name}.profile *.profile.d
+# llvm-profdata is broken because of https://bugs.llvm.org/show_bug.cgi?id=51624
+# but since we only run one command, there's just 1 file to take care of anyway.
+mv *.profile.d %{name}.profile
 
 make clean
 
