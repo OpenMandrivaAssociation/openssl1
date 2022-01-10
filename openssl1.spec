@@ -70,7 +70,7 @@
 
 Summary: Utilities from the general purpose cryptography library with TLS implementation
 Name: openssl
-Version: 1.1.1l
+Version: 1.1.1m
 %define beta %{nil}
 Release: %{-beta:0.%{beta}.}1
 # We have to remove certain patented algorithms from the openssl source
