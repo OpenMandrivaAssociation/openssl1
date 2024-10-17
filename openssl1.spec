@@ -118,7 +118,7 @@ Patch103: openssl-1.1.1a-use-clang-and-OMV-optflags.patch
 Patch104: https://raw.githubusercontent.com/clearlinux-pkgs/openssl/master/0002-Hide-a-symbol-from-Steam.patch
 License: OpenSSL
 Group: System/Libraries
-URL: http://www.openssl.org/
+URL: https://www.openssl.org/
 BuildRequires: coreutils
 %if ! %{with bootstrap}
 BuildRequires: krb5-devel
