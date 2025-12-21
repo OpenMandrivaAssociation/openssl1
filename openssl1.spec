@@ -119,6 +119,7 @@ Patch104: https://raw.githubusercontent.com/clearlinux-pkgs/openssl/master/0002-
 License: OpenSSL
 Group: System/Libraries
 URL: https://www.openssl.org/
+BuildRequires:	make
 BuildRequires: coreutils
 %if ! %{with bootstrap}
 BuildRequires: krb5-devel
