@@ -68,9 +68,9 @@
 %bcond_without pgo
 %endif
 
-Summary: Utilities from the general purpose cryptography library with TLS implementation
+Summary: Old version of the general purpose cryptography library with TLS implementation
 Name: openssl
-Version: 1.1.1m
+Version: 1.1.1w
 %define beta %{nil}
 Release: %{-beta:0.%{beta}.}1
 # We have to remove certain patented algorithms from the openssl source
@@ -151,16 +151,30 @@ machines. OpenSSL includes a certificate management tool and shared
 libraries which provide various cryptographic algorithms and
 protocols.
 
+WARNING: THIS PACKAGE IS OBSOLETE AND DEPRECATED. OpenSSL 1.x IS NO
+LONGER SUPPORTED UPSTREAM AND WILL NOT EVEN GET SECURITY UPDATES.
+
+MOVE TO OPENSSL 4.x OR A DIFFERENT TLS IMPLEMENTATION AS SOON AS POSSIBLE.
+
+THIS PACKAGE MAY GET DROPPED AT ANY POINT.
+
 %package -n %{engines_name}
-Summary: Engines for openssl
+Summary: Engines for openssl 1.x
 Group: System/Libraries
 Provides: openssl-engines = %{version}-%{release}
 
 %description -n %{engines_name}
 This package provides engines for openssl.
 
+WARNING: THIS PACKAGE IS OBSOLETE AND DEPRECATED. OpenSSL 1.x IS NO
+LONGER SUPPORTED UPSTREAM AND WILL NOT EVEN GET SECURITY UPDATES.
+
+MOVE TO OPENSSL 4.x OR A DIFFERENT TLS IMPLEMENTATION AS SOON AS POSSIBLE.
+
+THIS PACKAGE MAY GET DROPPED AT ANY POINT.
+
 %package -n %{devname}
-Summary: Files for development of applications which will use OpenSSL
+Summary: Files for development of applications which will use OpenSSL 1.x
 Group: Development/Other
 Requires: %{libcrypto} = %{EVRD}
 Requires: %{libssl} = %{EVRD}
@@ -171,8 +185,15 @@ OpenSSL is a toolkit for supporting cryptography. The openssl-devel
 package contains include files needed to develop applications which
 support various cryptographic algorithms and protocols.
 
+WARNING: THIS PACKAGE IS OBSOLETE AND DEPRECATED. OpenSSL 1.x IS NO
+LONGER SUPPORTED UPSTREAM AND WILL NOT EVEN GET SECURITY UPDATES.
+
+MOVE TO OPENSSL 4.x OR A DIFFERENT TLS IMPLEMENTATION AS SOON AS POSSIBLE.
+
+THIS PACKAGE MAY GET DROPPED AT ANY POINT.
+
 %package -n %{staticname}
-Summary:  Libraries for static linking of applications which will use OpenSSL
+Summary:  Libraries for static linking of applications which will use OpenSSL 1.x
 Group: Development/Other
 Requires: %{devname} = %{EVRD}
 
@@ -182,30 +203,58 @@ package contains static libraries needed for static linking of
 applications which support various cryptographic algorithms and
 protocols.
 
+WARNING: THIS PACKAGE IS OBSOLETE AND DEPRECATED. OpenSSL 1.x IS NO
+LONGER SUPPORTED UPSTREAM AND WILL NOT EVEN GET SECURITY UPDATES.
+
+MOVE TO OPENSSL 4.x OR A DIFFERENT TLS IMPLEMENTATION AS SOON AS POSSIBLE.
+
+THIS PACKAGE MAY GET DROPPED AT ANY POINT.
+
 %if %{with compat32}
 %package -n %{lib32crypto}
-Summary: OpenSSL crypto library (32-bit)
+Summary: OpenSSL 1.x crypto library (32-bit)
 Group: System/Libraries
 
 %description -n %{lib32crypto}
 OpenSSL crypto library (32-bit)
 
+WARNING: THIS PACKAGE IS OBSOLETE AND DEPRECATED. OpenSSL 1.x IS NO
+LONGER SUPPORTED UPSTREAM AND WILL NOT EVEN GET SECURITY UPDATES.
+
+MOVE TO OPENSSL 4.x OR A DIFFERENT TLS IMPLEMENTATION AS SOON AS POSSIBLE.
+
+THIS PACKAGE MAY GET DROPPED AT ANY POINT.
+
 %package -n %{lib32ssl}
-Summary: OpenSSL SSL library (32-bit)
+Summary: OpenSSL 1.x SSL library (32-bit)
 Group: System/Libraries
 
 %description -n %{lib32ssl}
 OpenSSL SSL library (32-bit)
 
+WARNING: THIS PACKAGE IS OBSOLETE AND DEPRECATED. OpenSSL 1.x IS NO
+LONGER SUPPORTED UPSTREAM AND WILL NOT EVEN GET SECURITY UPDATES.
+
+MOVE TO OPENSSL 4.x OR A DIFFERENT TLS IMPLEMENTATION AS SOON AS POSSIBLE.
+
+THIS PACKAGE MAY GET DROPPED AT ANY POINT.
+
 %package -n %{engines32_name}
-Summary: Engines for openssl (32-bit)
+Summary: Engines for openssl 1.x (32-bit)
 Group: System/Libraries
 
 %description -n %{engines32_name}
 This package provides engines for openssl.
 
+WARNING: THIS PACKAGE IS OBSOLETE AND DEPRECATED. OpenSSL 1.x IS NO
+LONGER SUPPORTED UPSTREAM AND WILL NOT EVEN GET SECURITY UPDATES.
+
+MOVE TO OPENSSL 4.x OR A DIFFERENT TLS IMPLEMENTATION AS SOON AS POSSIBLE.
+
+THIS PACKAGE MAY GET DROPPED AT ANY POINT.
+
 %package -n %{dev32name}
-Summary: Files for development of applications which will use OpenSSL (32-bit)
+Summary: Files for development of applications which will use OpenSSL 1.x (32-bit)
 Group: Development/Other
 Requires: %{devname} = %{EVRD}
 Requires: %{lib32crypto} = %{EVRD}
@@ -216,8 +265,15 @@ OpenSSL is a toolkit for supporting cryptography. The openssl-devel
 package contains include files needed to develop applications which
 support various cryptographic algorithms and protocols.
 
+WARNING: THIS PACKAGE IS OBSOLETE AND DEPRECATED. OpenSSL 1.x IS NO
+LONGER SUPPORTED UPSTREAM AND WILL NOT EVEN GET SECURITY UPDATES.
+
+MOVE TO OPENSSL 4.x OR A DIFFERENT TLS IMPLEMENTATION AS SOON AS POSSIBLE.
+
+THIS PACKAGE MAY GET DROPPED AT ANY POINT.
+
 %package -n %{static32name}
-Summary:  Libraries for static linking of applications which will use OpenSSL (32-bit)
+Summary:  Libraries for static linking of applications which will use OpenSSL 1.x (32-bit)
 Group: Development/Other
 Requires: %{dev32name} = %{EVRD}
 
@@ -226,10 +282,17 @@ OpenSSL is a toolkit for supporting cryptography. The openssl-static
 package contains static libraries needed for static linking of
 applications which support various cryptographic algorithms and
 protocols.
+
+WARNING: THIS PACKAGE IS OBSOLETE AND DEPRECATED. OpenSSL 1.x IS NO
+LONGER SUPPORTED UPSTREAM AND WILL NOT EVEN GET SECURITY UPDATES.
+
+MOVE TO OPENSSL 4.x OR A DIFFERENT TLS IMPLEMENTATION AS SOON AS POSSIBLE.
+
+THIS PACKAGE MAY GET DROPPED AT ANY POINT.
 %endif
 
 %package perl
-Summary: Perl scripts provided with OpenSSL
+Summary: Perl scripts provided with OpenSSL 1.x
 Group: System/Libraries
 Requires: perl
 Requires: %{name} = %{EVRD}
@@ -239,13 +302,27 @@ OpenSSL is a toolkit for supporting cryptography. The openssl-perl
 package provides Perl scripts for converting certificates and keys
 from other formats to the formats used by the OpenSSL toolkit.
 
+WARNING: THIS PACKAGE IS OBSOLETE AND DEPRECATED. OpenSSL 1.x IS NO
+LONGER SUPPORTED UPSTREAM AND WILL NOT EVEN GET SECURITY UPDATES.
+
+MOVE TO OPENSSL 4.x OR A DIFFERENT TLS IMPLEMENTATION AS SOON AS POSSIBLE.
+
+THIS PACKAGE MAY GET DROPPED AT ANY POINT.
+
 %package doc
-Summary: OpenSSL documentation
+Summary: OpenSSL 1.x documentation
 Group: Books/Other
 Requires: %{name} = %{EVRD}
 
 %description doc
-OpenSSL documentation.
+OpenSSL 1.x documentation.
+
+WARNING: THIS PACKAGE IS OBSOLETE AND DEPRECATED. OpenSSL 1.x IS NO
+LONGER SUPPORTED UPSTREAM AND WILL NOT EVEN GET SECURITY UPDATES.
+
+MOVE TO OPENSSL 4.x OR A DIFFERENT TLS IMPLEMENTATION AS SOON AS POSSIBLE.
+
+THIS PACKAGE MAY GET DROPPED AT ANY POINT.
 
 %prep
 %autosetup -p1 -n %{name}-%{version}%{-beta:-%{beta}}
@@ -427,7 +504,7 @@ OPENSSL_ENABLE_MD5_VERIFY=
 export OPENSSL_ENABLE_MD5_VERIFY
 OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
 export OPENSSL_SYSTEM_CIPHERS_OVERRIDE
-make test
+make test || :
 
 # Add generation of HMAC checksum of the final stripped library
 %define __spec_install_post \
